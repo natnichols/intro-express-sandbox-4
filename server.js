@@ -1,6 +1,6 @@
 // import modules
 import express from 'express'
-
+import { states } from './data/state-data.js'
 
 // create Express app
 const app = express()
@@ -16,10 +16,15 @@ app.set('view engine', 'ejs')
 
 // mount routes
 app.get('/', function(req, res) {
-  res.send(`<h1>Mulder, it's me</h1>`)
+  res.redirect('/home')
 })
 app.get('/home', function(req, res) {
   res.render('home')
+})
+app.get('/states', function(req, res) {
+  res.render('states/index', {
+    states: states
+  })
 })
 
 
